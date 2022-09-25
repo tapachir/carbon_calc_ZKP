@@ -1,0 +1,30 @@
+title Sequence Diagram
+
+participant Manufacturer
+participant Supplier A
+participant Supplier B
+participant Authority
+
+
+
+Manufacturer ->Supplier A :Request Parts
+activate Manufacturer
+activate Supplier A
+
+note left of Manufacturer: Initialize Car Production
+
+Manufacturer ->Supplier B :Request Parts
+activate Supplier B
+note over Supplier A: Calculate Carbon Emission of Parts
+Supplier A -->Manufacturer: Send Parts and Info of Carbon Emission of Parts
+deactivate Supplier A
+note over Supplier B: Calculate Carbon Emission of Parts
+
+Supplier B -->Manufacturer: Send Parts and Info of Carbon Emission of Parts
+deactivate Supplier B
+note left of Manufacturer: Manufacture Car and Calculate Footprint
+Manufacturer ->Authority: Send Carbon Footprint of Car
+deactivate Manufacturer
+
+
+

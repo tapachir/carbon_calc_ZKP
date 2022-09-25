@@ -1,7 +1,7 @@
 
 import os
 import time
-
+import csv
 
 AUTHORITY = "http://172.22.0.12:8001"
 PROVER = "http://172.22.0.10:8000"
@@ -14,11 +14,11 @@ if __name__ == "__main__":
 
     # wait for Information about Verifier Smart contract
     while not os.path.exists("build_contracts_Verifier.json") and not os.path.exists("build_contracts_RegisterAndVerify.json")  :
-        time.sleep(10)
+        time.sleep(1)
     print("verifier.json exists")
 
     while not os.path.exists("build_contracts_RegisterAndVerify.json")  :
-            time.sleep(10)
+            time.sleep(1)
     print("RegisterAndVerify.json exists")
 
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     # wait for result of pre-run calculation
     while not os.path.exists("result.txt") :
-            time.sleep(10)
+            time.sleep(1)
     print("result.txt exists")
     
     # wait for proof of calculation
@@ -43,15 +43,38 @@ if __name__ == "__main__":
     # --> export result of check
     os.system("python3 check_result_match_proof.py")
     while not os.path.exists("result_validation.txt") :
-        time.sleep(10)
+        time.sleep(1)
     
     # read the result of check 
-    result = open("result.txt", "r").readline()
+    result = open("result_validation.txt", "r").readline()
     if result == "false":
         print("received calculation result is not matching the received proof")
         exit
+    header = ['run', 'check_Proof',]
+    data = []
 
-        
-    # Verify Result with proof using the deployed Verifier Smart contract
-    os.system("truffle exec truffle_script.js")
+    with open('results/check_times.csv', 'w', encoding='UTF8') as f:
+        writer = csv.writer(f)
 
+        # write the header
+        writer.writerow(header)
+
+
+        for i in range(0,10):
+            # write the data
+            
+            # Verify Result with proof using the deployed Verifier Smart contract
+            st3 = time.time()
+            os.system("truffle exec truffle_script.js")
+
+            et3 =  time.time()
+            elapsed_time3 = et3 - st3
+            print('Time to check proof in SC:', elapsed_time3, 'seconds')
+            data.append(i)
+            data.append(elapsed_time3)
+            writer.writerow(data)
+            data.clear()
+    with open('results/check_times.csv', newline='') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            print(row)

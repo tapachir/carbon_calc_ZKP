@@ -1,0 +1,21 @@
+operation,mean_time
+mean_df1_10_check,  2.031825966835022
+mean_df1_10_exe_pre_run,   0.021636664867401074
+mean_df1_10_exe_zkp_calc,   0.9162422037124633
+mean_df1_10_exe_proof_gen,   3.0511938333511353
+mean_df1_10_exe_verify_save,   5.726171996593475
+mean_df1_20_check,   2.3654853224754335
+mean_df1_20_exe_pre_run,   0.023439047336578315
+mean_df1_20_exe_zkp_calc,   0.9639513421058655
+mean_df1_20_exe_proof_gen,   3.1701422333717346
+mean_df1_20_exe_verify_save,   5.835496349334717
+mean_df1_30_check,   2.043650224208832
+mean_df1_30_exe_pre_run,   0.023759815692901566
+mean_df1_30_exe_zkp_calc,   0.9021030282974243
+mean_df1_30_exe_proof_gen,   3.040267598628998
+mean_df1_30_exe_verify_save,   5.679729852676392
+mean_df1_100_check,   2.0539584827423094
+mean_df1_100_exe_pre_run,   0.027013454437255814
+mean_df1_100_exe_zkp_calc,   1.1411102509498596
+mean_df1_100_exe_proof_gen,   3.4492772960662843
+mean_df1_100_exe_verify_save,   6.2980004811286925

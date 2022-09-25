@@ -17,7 +17,8 @@ module.exports = async function(callback) {
 
     const resultVerified = await Verifier.deployed().then(function(instance){return instance.verifyProof(proof.toString(), proof.proof, proof.inputs)})
     console.log("Result and Proof valid: ", resultVerified.logs[0].args.result)
-
+    console.log("USED GAS 20 ", resultVerified.receipt.gasUsed)
+    
 
     const savedProof = await Verifier.deployed().then(function(instance){return instance.getProofs.call()})
     console.log("Saved Proof from Smart Contract", savedProof)

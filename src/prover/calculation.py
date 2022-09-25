@@ -16,7 +16,11 @@ print(emission_factors_supplier)
 
 # example amounts --> e.g. 1 piece,2 pieces, 3 pieces,...
 # product identifer is the index
-amounts =[1,2,3,4,5,6]
+#amounts =[1,2,3,4,5,6]
+
+amounts =[] 
+for z in range(0,first_half):
+    amounts.append(z+1)
 
 Sum = 0
 # checks if for used product a emissionfactor is present

@@ -12,6 +12,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x  | bash -
 RUN apt-get -y install nodejs
 RUN npm install
 RUN npm -global --quiet install truffle
+RUN npm install axios
+RUN npm i shelljs
 RUN apt-get install python3-requests
 
 COPY . .

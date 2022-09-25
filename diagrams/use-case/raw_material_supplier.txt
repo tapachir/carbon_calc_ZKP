@@ -1,0 +1,27 @@
+
+participant Part Supplier
+participant Raw Material Supplier A
+participant Raw Material Supplier B
+
+
+
+Part Supplier ->Raw Material Supplier A :Request Raw Material
+
+activate Part Supplier
+activate Raw Material Supplier A
+
+
+Part Supplier ->Raw Material Supplier B :Request Raw Material
+activate Raw Material Supplier B
+note over Raw Material Supplier A: Calculate Carbon Emission of Raw Material
+Raw Material Supplier A -->Part Supplier: Send Raw Material and Info of Carbon Emission of Raw Material
+deactivate Raw Material Supplier A
+note over Raw Material Supplier B: Calculate Carbon Emission of Raw Material
+
+Raw Material Supplier B -->Part Supplier: Send Raw Material and Info of Carbon Emission of Raw Material
+deactivate Raw Material Supplier B
+
+Part Supplier ->Manufacturer: Send Carbon Footprint of Part
+deactivate Part Supplier
+
+
