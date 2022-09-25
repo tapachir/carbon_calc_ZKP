@@ -1,6 +1,6 @@
 # ZKP Carbon Calculation
 
-This is a simple prototyp for running off-chain calculations (e.g. of carbon-emissions) using ZoKrates and verifying the result inside a Docker environment. The Docker Containers communicate via their APIs.
+This is the prototyp for running off-chain calculations of carbon-emissions using ZoKrates and verifying the result inside a Docker environment. The Docker Containers communicate via their APIs.
 
 ## Dependencies:
 - Docker (min v20.10.14 confirmed)
@@ -8,9 +8,10 @@ This is a simple prototyp for running off-chain calculations (e.g. of carbon-emi
 
 ## How to run:
 - ```docker-compose up ```
+- to end execution -> ```docker-compose down ```
 
 Involved Parties: 
-- Trusted Authority / Auditor
+- Trusted Pary (or Authority/Auditor)
 - Prover (Party that executes calculation)
 - Verifier (Party that verifies result of calculation)
 - local Blockchain instance (Ganache)
@@ -26,4 +27,7 @@ Main logic of the different parties is in the client.py files.
 
 ## WiP:
 This implemention is currently setup to run a hardcoded one-time calculation that is verifiable. 
-Execution Time not accurate due to usedd sleep-timer.
+Execution Time not accurate due to used sleep-timer.
+
+## Evaluation:
+The branch "evaluation" contains the code that was used for running performance experiments. The folder diagram/eval contains the results of the experiments and the corressponding diagrams.
