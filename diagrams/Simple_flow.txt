@@ -1,0 +1,16 @@
+title Sequence Diagram
+
+participant Company A
+participant Company B
+participant Authority
+participant Blockchain
+
+Company A-> Authority : Formula / Recipe of Product / Process (ZKP Code)
+note over Authority:Audit and initial Setup 
+Authority ->Blockchain: Deploy Verifier Contract
+Authority ->Company A :  Proving Key & Contract Infos
+note over Company A :Execute Calculation and ZKP Code
+Company A ->Company B: Send Proof and Result
+Company B ->Blockchain: Verify Result with Proof
+Blockchain -->Company B: Verification
+

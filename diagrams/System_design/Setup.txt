@@ -1,0 +1,21 @@
+
+participant Company A
+participant Company B
+participant Trusted Party
+participant Blockchain
+
+Company A-> Trusted Party : Formula of Product / Process (ZKP Code)
+Company B-> Trusted Party : Formula of Product / Process (ZKP Code)
+activate Trusted Party
+note left of Trusted Party:Audit and Setup A
+
+note left of Trusted Party:Audit and Setup B
+
+
+Trusted Party ->Blockchain: Deploy Verifier Contract A
+deactivate Trusted Party
+
+Trusted Party ->Blockchain: Deploy Verifier Contract B
+Trusted Party ->Company A :  Proving Key & Contract Infos
+
+Trusted Party ->Company B :  Proving Key & Contract Infos

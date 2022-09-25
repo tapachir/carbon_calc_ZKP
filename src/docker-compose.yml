@@ -1,0 +1,55 @@
+services:
+
+  authority:
+    build: authority
+    container_name: authority
+    networks:
+      main_net:
+        ipv4_address: 172.22.0.12
+    command: bash -c "./run_authority.sh"
+    ports:
+      - mode: host
+        target: 5000
+  prover:
+    build: prover
+    container_name: prover
+    networks:
+      main_net:
+        ipv4_address: 172.22.0.10
+    command: bash -c "./run_prover.sh"
+    ports:
+      - mode: host
+        target: 5001
+  verifier:
+    build: verifier
+    container_name: verifier
+    networks:
+      main_net:
+        ipv4_address: 172.22.0.11
+    command: bash -c "./verify_proof.sh"
+    ports:
+      - mode: host
+        target: 5002
+  node:
+    image: trufflesuite/ganache-cli:latest
+    networks:
+      main_net:
+        ipv4_address: 172.22.0.13
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./ganache_data:/ganache_data
+    entrypoint:
+      - node
+      - /app/ganache-core.docker.cli.js
+      - --deterministic
+      - --db=/ganache_data
+      - --hostname
+      - '0.0.0.0'
+
+networks:
+  main_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16

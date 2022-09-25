@@ -1,0 +1,20 @@
+import "hashes/sha256/512bitPacked" as sha256packed
+import "utils/casts/u32_to_field" as u32_to_field
+
+def main(private u32[6] a, private u32[6] c, private u32 b) -> field[2]:
+
+
+
+  u32 res = 0
+  u32[6] amounts = [1,2,3,4,5,6]
+
+  for u32 x in 0..6 do
+    u32 factor = if c[x] != 0 then c[x] else 0 fi
+    factor = if factor == 0 then a[x] else factor fi
+    res = res + amounts[x] * factor
+  endfor
+  assert(b==res)
+  u32 result = res
+  field[2] h = sha256packed([0, 0, 0, u32_to_field(result)])
+
+  return h

@@ -1,0 +1,26 @@
+
+participant Company A
+participant Company B
+participant Company C
+participant Blockchain
+
+activate Company A
+note left of Company A :Execute VoC Calculation 
+
+Company A ->Blockchain: Verify Result with Proof and store Proof
+deactivate Company A
+
+Company A ->Company B: Send Proof and Result
+
+Company B ->Blockchain: Check if verified Proof stored
+Blockchain -->Company B: Verification Respone
+activate Company B
+note left of Company B :Execute VoC Calculation 
+Company B ->Company C: Send Proof and Result
+
+deactivate Company B
+
+
+
+Company C ->Blockchain: Verify Result with Proof
+Blockchain -->Company C: Verification Respone

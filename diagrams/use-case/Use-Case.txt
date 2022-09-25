@@ -1,0 +1,23 @@
+title Sequence Diagram
+
+participant Manufacturer
+participant Supplier A
+participant Supplier B
+participant Authority
+
+
+
+note over Manufacturer: Initialize Car Prodction
+Manufacturer ->Supplier A :Request Parts
+Manufacturer ->Supplier B :Request Parts
+
+note over Supplier A: Calculate Carbon Emission of Parts
+Supplier A -->Manufacturer: Send Parts and Info of Carbon Emission of Parts
+note over Supplier B: Calculate Carbon Emission of Parts
+
+Supplier B -->Manufacturer: Send Parts and Info of Carbon Emission of Parts
+note over Manufacturer: Manufacture Car and Calculate Footprint
+Manufacturer ->Authority: Send Carbon Footprint of Car
+
+
+
