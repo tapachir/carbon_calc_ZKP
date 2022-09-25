@@ -5,7 +5,8 @@ This is the prototyp for running off-chain calculations of carbon-emissions usin
 ## Dependencies:
 - Docker (min v20.10.14 confirmed)
 - Docker-compose (min v1.29.2 confirmed)
-
+## Tested on:
+- MacBook Pro Intel i7, MacOs 12.6
 ## How to run:
 - ```docker-compose up ```
 - to end execution -> ```docker-compose down ```
